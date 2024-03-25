@@ -48,7 +48,7 @@ st.subheader('Distribution of Parks by States')
 df_park = get_data()
 st.write(df_park.sample(5))
 
-state_counts = df_parks['address_stateCode'].value_counts()
+state_counts = df_park['address_stateCode'].value_counts()
 # st.bar_chart(state_counts)
 plt.figure(figsize=(19, 17))
 st.set_option('deprecation.showPyplotGlobalUse', False)
