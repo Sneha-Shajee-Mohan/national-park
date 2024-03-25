@@ -50,7 +50,7 @@ st.write(df_park.sample(5))
 
 state_counts = df_park['address_stateCode'].value_counts()
 # st.bar_chart(state_counts)
-plt.figure(figsize=(19, 17))
+plt.figure(figsize=(25, 25))
 st.set_option('deprecation.showPyplotGlobalUse', False)
 plt.bar(state_counts.index, state_counts.values)
 plt.xlabel('State',fontsize=20)
