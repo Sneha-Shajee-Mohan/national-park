@@ -45,9 +45,12 @@ def get_data():
 st.title('National Parks Data')
 st.subheader('Distribution of Parks by States')
 
+st.subheader('This is a view of a subset of National park data ')
 df_park = get_data()
 st.write(df_park.sample(5))
 
+
+st.subheader(' Visualization of park distribution across different states ')
 state_counts = df_park['address_stateCode'].value_counts()
 # st.bar_chart(state_counts)
 plt.figure(figsize=(30,30 ))
