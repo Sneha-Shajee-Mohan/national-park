@@ -3,6 +3,7 @@ import pickle
 import streamlit as st
 from dotenv import load_dotenv
 from utils.b2 import B2
+import matplotlib.pyplot as plt
 
 
 
@@ -41,12 +42,20 @@ def get_data():
 # ------------------------------
 # PART 0 : Overview
 # ------------------------------
-st.write(
-'''
-# national park portal
-We pull data from our Backblaze storage bucket, and render it in Streamlit.
-''')
+st.title('National Parks Data')
+st.subheader('Distribution of Parks by States')
 
 df_park = get_data()
 st.write(df_park.sample(5))
+
+state_counts = df_parks['address_stateCode'].value_counts()
+# st.bar_chart(state_counts)
+plt.figure(figsize=(19, 17))
+st.set_option('deprecation.showPyplotGlobalUse', False)
+plt.bar(state_counts.index, state_counts.values)
+plt.xlabel('State',fontsize=15)
+plt.ylabel('Number of National Parks',fontsize=15)
+plt.title('Distribution of National Parks across Different States',fontsize=15)
+plt.xticks(fontsize=10)
+st.pyplot()
 
