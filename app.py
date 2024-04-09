@@ -6,6 +6,7 @@ from utils.b2 import B2
 import matplotlib
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_agg import RendererAgg
 
 
 matplotlib.use("agg")
