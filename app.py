@@ -3,14 +3,9 @@ import pickle
 import streamlit as st
 from dotenv import load_dotenv
 from utils.b2 import B2
-import matplotlib
-from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_agg import RendererAgg
 
 
-matplotlib.use("agg")
-_lock = RendererAgg.lock
 
 # ------------------------------------------------------
 #                      APP CONSTANTS
@@ -59,18 +54,13 @@ st.subheader(' Visualization of park distribution across different states ')
 state_counts = df_park['address_stateCode'].value_counts()
 # st.bar_chart(state_counts)
 
-with _lock:
-    fig = Figure()
-    ax = fig.subplots()
-    # plt.figure(figsize=(30,30 ))
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    # plt.bar(state_counts.index, state_counts.values)
-    ax.bar(state_counts.index, state_counts.values)
-    # plt.xlabel('State',fontsize=25)
-    ax.set_xlabel('State',fontsize=25)
-    # plt.ylabel('Number of National Parks',fontsize=25)
-    ax.set_ylabel('Number of National Parks',fontsize=25)
-    # plt.title('Distribution of National Parks across Different States',fontsize=35)
-    # plt.xticks(fontsize=18)
-    st.pyplot(fig)
+
+plt.figure(figsize=(30,30 ))
+st.set_option('deprecation.showPyplotGlobalUse', False)
+plt.bar(state_counts.index, state_counts.values)
+plt.xlabel('State',fontsize=25)
+plt.ylabel('Number of National Parks',fontsize=25)
+plt.title('Distribution of National Parks across Different States',fontsize=35)
+plt.xticks(fontsize=18)
+st.pyplot()
 
